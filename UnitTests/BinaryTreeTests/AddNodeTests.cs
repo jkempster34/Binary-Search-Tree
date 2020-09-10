@@ -24,10 +24,9 @@ namespace UnitTests.BinaryTreeTests
         public void AddNode_WithGreaterValueThanFirstNode_IsSetAsGreaterNode()
         {
             // Arrange
-            const int rootNodeValue = 1;
             const int secondNodeValue = 2;
             BinaryTree tree = new BinaryTree();
-            Node rootNode = new Node() { Value = rootNodeValue };
+            Node rootNode = new Node() { Value = 1 };
             Node secondNode = new Node() { Value = secondNodeValue };
 
             // Act
@@ -42,10 +41,9 @@ namespace UnitTests.BinaryTreeTests
         public void AddNode_WithLowerValueThanFirstNode_IsSetAsLesserNode()
         {
             // Arrange
-            const int rootNodeValue = 2;
             const int secondNodeValue = 1;
             BinaryTree tree = new BinaryTree();
-            Node rootNode = new Node() { Value = rootNodeValue };
+            Node rootNode = new Node() { Value = 2 };
             Node secondNode = new Node() { Value = secondNodeValue };
 
             // Act
@@ -61,11 +59,10 @@ namespace UnitTests.BinaryTreeTests
         public void AddNode_WithValueThatAlreadyExists_ReturnsFalse()
         {
             // Arrange
-            const int firstNodeValue = 1;
-            const int secondNodeValue = 1;
+            const int nodeValue = 1;
             BinaryTree tree = new BinaryTree();
-            Node firstNode = new Node() { Value = firstNodeValue };
-            Node secondNode = new Node() { Value = secondNodeValue };
+            Node firstNode = new Node() { Value = nodeValue };
+            Node secondNode = new Node() { Value = nodeValue };
 
             // Act
             tree.AddNode(firstNode);
@@ -79,11 +76,9 @@ namespace UnitTests.BinaryTreeTests
         public void AddNode_WithValueThatIsNew_ReturnsTrue()
         {
             // Arrange
-            const int firstNodeValue = 1;
-            const int secondNodeValue = 2;
             BinaryTree tree = new BinaryTree();
-            Node firstNode = new Node() { Value = firstNodeValue };
-            Node secondNode = new Node() { Value = secondNodeValue };
+            Node firstNode = new Node() { Value = 1 };
+            Node secondNode = new Node() { Value = 2 };
 
             // Act
             tree.AddNode(firstNode);

@@ -8,7 +8,8 @@ namespace BinarySearchTree
 
         public string FindNodeNameByValue(int nodeValue)
         {
-            return "name";
+            Node node = FindNodeRecursive(Root, nodeValue);
+            return node.Name;
         }
 
         public bool AddNode(Node nodeToAdd)
@@ -50,5 +51,21 @@ namespace BinarySearchTree
             return currentNode;
         }
 
+        private Node FindNodeRecursive(Node currentNode, int nodeValueToFind)
+        {
+            if (currentNode.Value == nodeValueToFind)
+            {
+                return currentNode;
+            }
+            else if (currentNode.Value > nodeValueToFind)
+            {
+                return FindNodeRecursive(currentNode.LesserNode, nodeValueToFind);
+            }
+            else if (currentNode.Value < nodeValueToFind)
+            {
+                return FindNodeRecursive(currentNode.GreaterNode, nodeValueToFind);
+            }
+            else return new Node();
+        }
     }
 }
