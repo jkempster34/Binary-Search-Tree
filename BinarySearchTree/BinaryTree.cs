@@ -4,7 +4,13 @@ namespace BinarySearchTree
 {
     public class BinaryTree
     {
+        public BinaryTree()
+        {
+            Count = 0;
+        }
+
         public Node Root { get; set; }
+        public int Count { get; set; }
 
         public string FindNodeNameByValue(int nodeValue)
         {
@@ -29,6 +35,25 @@ namespace BinarySearchTree
             return nodeAdded;
         }
 
+        private Node FindNodeRecursive(Node currentNode, int nodeValueToFind)
+        {
+            IncrementCount();
+
+            if (currentNode.Value == nodeValueToFind)
+            {
+                return currentNode;
+            }
+            else if (currentNode.Value > nodeValueToFind)
+            {
+                return FindNodeRecursive(currentNode.LesserNode, nodeValueToFind);
+            }
+            else if (currentNode.Value < nodeValueToFind)
+            {
+                return FindNodeRecursive(currentNode.GreaterNode, nodeValueToFind);
+            }
+            else return new Node();
+        }
+
         private Node AddNodeRecursive(Node currentNode, Node nodeToAdd)
         {
             if (currentNode == null) // Exit conditon
@@ -51,21 +76,6 @@ namespace BinarySearchTree
             return currentNode;
         }
 
-        private Node FindNodeRecursive(Node currentNode, int nodeValueToFind)
-        {
-            if (currentNode.Value == nodeValueToFind)
-            {
-                return currentNode;
-            }
-            else if (currentNode.Value > nodeValueToFind)
-            {
-                return FindNodeRecursive(currentNode.LesserNode, nodeValueToFind);
-            }
-            else if (currentNode.Value < nodeValueToFind)
-            {
-                return FindNodeRecursive(currentNode.GreaterNode, nodeValueToFind);
-            }
-            else return new Node();
-        }
+        private void IncrementCount() => Count++;
     }
 }
